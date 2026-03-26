@@ -105,7 +105,7 @@ class App extends BaseConfig
      *
      * If false, no automatic detection will be performed.
      */
-    public bool $negotiateLocale = true;
+    public bool $negotiateLocale = false;
 
     /**
      * --------------------------------------------------------------------------
@@ -120,7 +120,7 @@ class App extends BaseConfig
      *
      * @var list<string>
      */
-    public array $supportedLocales = ['hu', 'en', 'de', 'sk', 'cs', 'pl', 'ro', 'sr', 'nl', 'fr', 'es'];
+    public array $supportedLocales = ['hu'];
 
     /**
      * --------------------------------------------------------------------------

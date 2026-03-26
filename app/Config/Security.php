@@ -51,7 +51,7 @@ class Security extends BaseConfig
      *
      * Cookie name for Cross Site Request Forgery protection.
      */
-    public string $cookieName = 'bk_csrf';
+    public string $cookieName = 'anm_csrf';
 
     /**
      * --------------------------------------------------------------------------
