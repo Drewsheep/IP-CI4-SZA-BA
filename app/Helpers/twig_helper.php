@@ -28,30 +28,6 @@ if (!function_exists('twig_conf')) {
         if ($isDev) {
             $twig->addExtension(new DebugExtension());
         }
-
-        $twig->addFilter(new TwigFilter('t', function ($key, $params = []) {
-            if (!str_contains($key, '.')) {
-                $key = 'Lang.' . $key;
-            }
-
-            return lang($key, $params);
-        }));
-
-
-        $twig->addFunction(new TwigFunction('asset', function ($path) {
-            $path = ltrim($path, '/');
-            $fullPath = FCPATH . $path;
-
-            if (file_exists($fullPath)) {
-                $version = filemtime($fullPath);
-            } else {
-                $version = time();
-            }
-
-            return base_url($path) . '?v=' . $version;
-        }));
-
-        $twig->addFunction(new TwigFunction('current_url', fn() => current_url()));
         
         return $twig;
     }
