@@ -116,5 +116,3 @@ A CodeIgniter 4 jó választás ehhez a projekthez, mert:
 ## Projekt célja
 
 A projekt célja nem csak egy egyszerű anime-listázó oldal létrehozása, hanem egy olyan stabil alap kiépítése, amely később teljes értékű közösségi és adatbázis-rendszerré bővíthető. A dizájn erősen fókuszál a vizuális élményre, miközben a CodeIgniter 4 hátteret ad a strukturált backend fejlesztéshez.
-
----
