@@ -1,33 +1,33 @@
-# Anime Database Web App
+# Informatikai projektfeladat - AnimeDB App
 
 Egy **CodeIgniter 4** alapú anime-adatbázis és közösségi webalkalmazás, amely a **MyAnimeList**, az **IMDb** és a modern tartalomkatalógus-oldalak világából merít inspirációt. A projekt célja egy látványos, gyors és jól strukturált platform létrehozása, ahol a felhasználók anime címek között böngészhetnek, részletes adatlapokat nyithatnak meg, kategóriák szerint szűrhetnek, valamint később közösségi funkciókat is használhatnak.
 
 A jelenlegi UI alapján a rendszer fő elemei:
-- főoldali hero / kiemelt tartalmak
-- kategóriaoldalak és listázás
-- anime részletező oldal
-- bejelentkezés és regisztráció
-- toplisták, nézettségi és értékelési adatok
-- később bővíthető komment, review és felhasználói funkciók
+- Főoldali hero / kiemelt tartalmak
+- Kategóriaoldalak és listázás
+- Anime részletező oldal
+- Bejelentkezés és regisztráció
+- Toplisták, nézettségi és értékelési adatok
+- Később bővíthető komment, review és felhasználói funkciók
 
 ---
 
-## Főbb funkciók
+## 🔶 Főbb funkciók
 
-- animek listázása kártyás elrendezésben
-- kategóriák és műfajok szerinti böngészés
-- rendezés különböző szempontok szerint
-- részletes anime adatlap metaadatokkal
-- toplisták és népszerű tartalmak megjelenítése
-- bejelentkezési és regisztrációs felület
-- keresés és navigációs rendszer
-- előkészített struktúra értékelésekhez, kommentekhez és watchlist funkciókhoz
+- Animék listázása kártyás elrendezésben
+- Kategóriák és műfajok szerinti böngészés
+- Rendezés különböző szempontok szerint
+- Részletes anime adatlap metaadatokkal
+- Toplisták és népszerű tartalmak megjelenítése
+- Bejelentkezési és regisztrációs felület
+- Keresés és navigációs rendszer
+- Előkészített struktúra értékelésekhez, kommentekhez és watchlist funkciókhoz
 
 ---
 
-## Oldalak / modulok
+## 🔶 Oldalak / modulok
 
-### 1. Főoldal
+### 🔹 1. Főoldal
 A kezdőoldal hero sliderrel, kiemelt anime tartalmakkal és népszerű listákkal vezeti be a felhasználót a platformba.
 
 **Tartalom:**
@@ -37,7 +37,7 @@ A kezdőoldal hero sliderrel, kiemelt anime tartalmakkal és népszerű listákk
 - kategória navigáció
 - gyors átjárás az anime adatlapokra
 
-### 2. Kategóriaoldal
+### 🔹 2. Kategóriaoldal
 A kategória nézet lehetővé teszi az animék böngészését és rendezését.
 
 **Tartalom:**
@@ -46,7 +46,7 @@ A kategória nézet lehetővé teszi az animék böngészését és rendezését
 - kártyás megjelenítés
 - oldalsávos toplista / népszerű tartalmak
 
-### 3. Anime részletező oldal
+### 🔹 3. Anime részletező oldal
 Az anime adatlap részletes információkat jelenít meg az adott címről.
 
 **Tartalom:**
@@ -58,7 +58,7 @@ Az anime adatlap részletes információkat jelenít meg az adott címről.
 - követés és megtekintés gombok
 - hely előkészítve kommentekhez és review-khoz
 
-### 4. Bejelentkezés
+### 🔹 4. Bejelentkezés
 Külön login oldal a felhasználói fiókok kezeléséhez.
 
 **Tartalom:**
@@ -68,7 +68,7 @@ Külön login oldal a felhasználói fiókok kezeléséhez.
 - elfelejtett jelszó opció
 - átjárás a regisztrációhoz
 
-### 5. Regisztráció
+### 🔹 5. Regisztráció
 Új felhasználók számára fióklétrehozási felület.
 
 **Tartalom:**
@@ -79,11 +79,11 @@ Külön login oldal a felhasználói fiókok kezeléséhez.
 
 ---
 
-## Technológiai háttér
+## 🔶 Technológiai háttér
 
 Ez a projekt **CodeIgniter 4** keretrendszerre épül, így a backend és az MVC struktúra PHP alapon valósul meg.
 
-### Tervezett / használt stack
+### 🔹 Tervezett / használt stack
 
 **Backend**
 - PHP 8+
@@ -102,7 +102,7 @@ Ez a projekt **CodeIgniter 4** keretrendszerre épül, így a backend és az MVC
 
 ---
 
-## Miért CodeIgniter 4?
+## 🔶 Miért CodeIgniter 4?
 
 A CodeIgniter 4 jó választás ehhez a projekthez, mert:
 - könnyű és gyors keretrendszer
@@ -111,8 +111,4 @@ A CodeIgniter 4 jó választás ehhez a projekthez, mert:
 - beépített validációval és request/response kezeléssel rendelkezik
 - könnyen bővíthető admin, auth, komment és API funkciókkal
 
----
-
-## Projekt célja
-
-A projekt célja nem csak egy egyszerű anime-listázó oldal létrehozása, hanem egy olyan stabil alap kiépítése, amely később teljes értékű közösségi és adatbázis-rendszerré bővíthető. A dizájn erősen fókuszál a vizuális élményre, miközben a CodeIgniter 4 hátteret ad a strukturált backend fejlesztéshez.
+## 🔶 © 2026 Szabó Adrián -  Baranyai András
