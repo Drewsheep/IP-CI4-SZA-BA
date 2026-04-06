@@ -7,8 +7,8 @@
   src: url("/fonts/SairaSemiCondensed.ttf") format("truetype");
 }
 :root {
-  --primary: #e53637;
-  --secondary: #f44336;
+  --primary: #e43087;
+  --secondary: #fe3798;
   --white: #fff;
   --black: #000;
 }
@@ -54,7 +54,7 @@ main::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: url("/img/hero/hero-1.jpg") center/cover no-repeat;
+  background: url("/img/error/bg.jpg") center/cover no-repeat;
   opacity: 0;
   animation: bgFadeIn 2s ease forwards;
   z-index: 0;

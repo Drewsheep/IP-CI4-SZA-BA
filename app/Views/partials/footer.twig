@@ -1,33 +1,65 @@
-<footer class="footer">
-    <div class="page-up">
-        <a href="#" id="scrollToTopButton"><span class="arrow_carrot-up"></span></a>
-    </div>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="footer__logo">
-                    <a href="/"><img src="/img/logo.png" alt="logo"></a>
+<footer>
+    <div class="container-fluid footer">
+        <div class="container pb-4 pt-5">
+            <div class="row g-5">
+                <div class="col-md-6 col-lg-3">
+                    <a class="logo" href="/"><img src="/img/logo.png" alt="logo"></a>
+                    <p class="mt-4">Nézz körül az animék széles választékában, itt mindent megtalálsz!</p>
+                    <div class="d-flex socials">
+                        <a href="https://facebook.com/baranyaikerites/" class="me-2" target="_blank"><i class="bi bi-facebook"></i></a>
+                        <a href="mailto:info@keritesbaranyai.hu" class="me-2"><i class="bi bi-envelope-fill"></i></a>
+                        <a href="https://www.google.com/maps/place/BaranyaiKer%C3%ADt%C3%A9s/@47.734321,17.5783274,17z/data=!3m1!4b1!4m6!3m5!1s0x476b95e1d68913a1:0x30b2cda393ae8733!8m2!3d47.7343174!4d17.5809023!16s%2Fg%2F11vc0hn4k1?hl=hu&entry=ttu" class="me-2" target="_blank"><i class="bi bi-geo-alt-fill"></i></a>
+                        <a href="tel:+36202044140" class="me-2"><i class="bi bi-telephone-fill"></i></a>
+                        <a href="https://g.page/r/CTOHrpOjzbIwEBM/review" class="me-2" target="_blank"><i class="bi bi-star-half"></i></a>
+                    </div>
+                    <p class="mt-4 mb-1">Támogathatsz minket:</p>
+                    <div class="d-flex">
+                        <img alt="mastercard" src="/img/cards/mastercard.webp" title="MasterCard" class="me-2" loading="lazy">
+                        <img alt="maestro" src="/img/cards/maestro.webp" title="Maestro" class="me-2" loading="lazy">
+                        <img alt="visa" src="/img/cards/visa.webp" title="Visa" class="me-2" loading="lazy"></div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h5>Oldalak</h5>
+                        <div class="d-flex flex-column mt-4">
+                            <a href="/" class="mb-2">Főoldal</a>
+                            <a href="#" class="mb-2">Kategóriák</a>
+                            <a href="#" class="mb-2">Bejelentkezés</a>
+                            <a href="#" class="mb-2">Regisztráció</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h5>Valami</h5>
+                        <div class="d-flex flex-column mt-4">
+                            <a href="#" class="mb-2">Valami</a>
+                            <a href="#" class="mb-2">Valami</a>
+                            <a href="#" class="mb-2">Valami</a>
+                            <a href="#" class="mb-2">Valami</a>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-3">
+                        <h5>Információk</h5>
+                        <div class="d-flex flex-column mt-4">
+                            <div class="flex-shrink-0">
+                                <h6 class="mb-0 me-auto">Oldal látogatottság:</h6>
+                                <p class="mb-2">1204 db</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <h6 class="mb-0 me-auto">Összes anime:</h6>
+                                <p class="mb-2">123 db</p>
+                            </div>
+                            <div class="flex-shrink-0">
+                                <h6 class="mb-0 me-auto">Összes komment:</h6>
+                                <p class="mb-2">330 db</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6">
-                <div class="footer__nav">
-                    <ul>
-                        <li class="active"><a href="/">Főoldal</a></li>
-                        <li><a href="#">Kategóriák</a></li>
-                        <li><a href="#">Belépés</a></li>
-                        <li><a href="#">Regisztráció</a></li>
-                    </ul>
+                <hr class="mb-4 mt-5">
+                <div class="row">
+                    <div class="col-md-6 text-center text-md-start"><span><a href="https://nje.hu/">NJE</a> — <a href="https://gamf.uni-neumann.hu/">GAMF</a></span></div>
+                    <div class="col-md-6 text-center text-md-end"><span>&copy; {{ now|date('Y') }} Drewsheep's Paradise™ | Minden jog fenntartva.</span></div>
                 </div>
             </div>
         </div>
     </div>
 </footer>
-
-<div class="search-model">
-    <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch"><i class="icon_close"></i></div>
-        <form class="search-model-form">
-            <input type="text" id="search-input" placeholder="Keresés...">
-        </form>
-    </div>
-</div>
