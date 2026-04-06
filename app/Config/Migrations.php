@@ -16,7 +16,7 @@ class Migrations extends BaseConfig
      * You should enable migrations whenever you intend to do a schema migration
      * and disable it back when you're done.
      */
-    public bool $enabled = false;
+    public bool $enabled = true;
 
     /**
      * --------------------------------------------------------------------------
@@ -61,5 +61,5 @@ class Migrations extends BaseConfig
      * This is useful in production environments to avoid conflicts
      * or race conditions during concurrent deployments.
      */
-    public bool $lock = true;
+    public bool $lock = false;
 }
