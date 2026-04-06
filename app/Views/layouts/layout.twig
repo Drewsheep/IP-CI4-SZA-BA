@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="hu">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ html_title }} | AnimeDB Magyarország</title>
+
+        <meta name="description" content="{{ html_description }}">
+        <meta name="robots" content="{% block robots %}index, follow{% endblock %}">
+        <meta name="copyright" content="AnimeDB">
+        <meta name="author" content="Szabó Adrián, Baranyai András">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+
+        <link rel="shortcut icon" href="/img/favicon/favicon.ico" type="image/x-icon">
+
+        {% block vendor_css %}
+            <link rel="stylesheet" href="/css/bootstrap.min.css">
+            <link rel="stylesheet" href="/css/elegant-icons.css">
+            <link rel="stylesheet" href="/css/font-awesome.min.css">
+            <link rel="stylesheet" href="/css/nice-select.css">
+            <link rel="stylesheet" href="/css/owl.carousel.min.css">
+            <link rel="stylesheet" href="/css/plyr.css">
+            <link rel="stylesheet" href="/css/slicknav.min.css">
+        {% endblock %}
+
+        {% block css %}
+            <link rel="stylesheet" href="/css/style.css">
+        {% endblock %}
+
+        {% block google_fonts %}
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;500;600;700&display=swap">
+            <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mulish:wght@300;400;500;600;700;800;900&display=swap">
+        {% endblock %}
+
+        {% block og %}
+            <meta property="og:title" content="{{ html_title }}">
+            <meta property="og:description" content="{{ html_description }}">
+            <meta property="og:site_name" content="AnimeDB Magyarország">
+            <meta property="og:type" content="website">
+        {% endblock %}
+    </head>
+    <body>
+        <div id="preloder">
+            <div class="loader"></div>
+        </div>
+
+        {% block header %}
+            {% include "partials/header.twig" %}
+        {% endblock %}
+
+        <main>
+            {% block content %}{% endblock %}
+        </main>
+
+        {% block footer %}
+            {% include "partials/footer.twig" %}
+        {% endblock %}
+
+        {% block js %}
+            <script defer src="/js/jquery-3.3.1.min.js"></script>
+            <script defer src="/js/bootstrap.min.js"></script>
+            <script defer src="/js/player.js"></script>
+            <script defer src="/js/jquery.nice-select.min.js"></script>
+            <script defer src="/js/mixitup.min.js"></script>
+            <script defer src="/js/jquery.slicknav.js"></script>
+            <script defer src="/js/owl.carousel.min.js"></script>
+            <script defer src="/js/main.js"></script>
+        {% endblock %}
+    </body>
+</html>

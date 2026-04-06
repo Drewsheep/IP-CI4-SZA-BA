@@ -1,0 +1,90 @@
+@font-face {
+  font-family: "Roboto Condensed";
+  src: url("/fonts/RobotoCondensed.ttf") format("truetype");
+}
+@font-face {
+  font-family: "Saira Semi Condensed";
+  src: url("/fonts/SairaSemiCondensed.ttf") format("truetype");
+}
+:root {
+  --primary: #e53637;
+  --secondary: #f44336;
+  --white: #fff;
+  --black: #000;
+}
+* {
+  scroll-behavior: smooth;
+  font-family: "Roboto Condensed", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  text-decoration: none;
+}
+.button-main {
+  color: #fff;
+  background: var(--secondary);
+  font-size: 16px;
+  display: inline-block;
+  padding: 10px 15px;
+  transition: 0.3s;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 1px solid var(--secondary);
+  border-radius: 4px;
+}
+.button-main:hover {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+}
+main {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+  text-align: center !important;
+  min-height: 100vh !important;
+  background: var(--black) !important;
+  background-image: none !important;
+  position: relative !important;
+  overflow: hidden;
+}
+main::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/img/hero/hero-1.jpg") center/cover no-repeat;
+  opacity: 0;
+  animation: bgFadeIn 2s ease forwards;
+  z-index: 0;
+  pointer-events: none;
+}
+main::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 1 !important;
+  pointer-events: none;
+}
+main .content {
+  position: relative;
+  z-index: 2 !important;
+}
+@keyframes bgFadeIn {
+  to {
+    opacity: 1;
+  }
+}
+main .content p {
+  color: var(--primary);
+  font-size: clamp(20px, 2vmax, 30px);
+  line-height: clamp(24px, 2vmax, 32px);
+}
+main .content h1 {
+  color: var(--white);
+  font-size: clamp(24px, 3.6vmax, 68px);
+  line-height: clamp(30px, 3.6vmax, 68px);
+  font-family: "Saira Semi Condensed", sans-serif;
+}

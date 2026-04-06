@@ -1,0 +1,19 @@
+{% extends "layouts/layout.twig" %}
+
+{% block robots %}noindex, nofollow{% endblock %}
+{% block vendor_css %}{% endblock %}
+{% block css %}<link rel="stylesheet" href="/css/404.css">{% endblock %}
+{% block og %}{% endblock %}
+{% block google_fonts %}{% endblock %}
+{% block header %}{% endblock %}
+
+{% block content %}
+    <div class="content">
+        <h1>Hoppá!</h1>
+        <p>Valami hiba történt.</p>
+        <a class="button-main" href="/">{{ 'back_to_home'|t }}</a>
+    </div>
+{% endblock %}
+
+{% block footer %}{% endblock %}
+{% block js %}{% endblock %}
