@@ -12,7 +12,7 @@
                     <nav class="header__menu mobile-menu">
                         <ul>
                             <li class="active"><a href="/">Főoldal</a></li>
-                            <li><a href="#">Kategóriák</a></li>
+                            <li><a href="/categories/">Kategóriák</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -20,7 +20,13 @@
             <div class="col-lg-2">
                 <div class="header__right">
                     <a href="#" class="search-switch"><span class="icon_search"></span></a>
-                    <a href="#"><span class="icon_profile"></span></a>
+
+                    {% if auth.isLoggedIn %}
+                        <a href="/account/" class="text-white mr-2 d-none d-lg-inline-block" title="Fiókom">{{ auth.user.name }}</a>
+                        <a href="/logout/" class="text-white" title="Kijelentkezés">Kilépés</a>
+                    {% else %}
+                        <a href="/login/" title="Bejelentkezés"><span class="icon_profile"></span></a>
+                    {% endif %}
                 </div>
             </div>
         </div>
