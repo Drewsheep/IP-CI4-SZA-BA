@@ -1,12 +1,6 @@
 -- phpMyAdmin SQL Dump
 -- version 5.2.1
 -- https://www.phpmyadmin.net/
---
--- Gép: 127.0.0.1
--- Létrehozás ideje: 2026. Ápr 09. 11:30
--- Kiszolgáló verziója: 10.4.32-MariaDB
--- PHP verzió: 8.2.12
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
@@ -51,7 +45,7 @@ CREATE TABLE `animes` (
   `rating_count` int(10) UNSIGNED NOT NULL DEFAULT 0,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- A tábla adatainak kiíratása `animes`
@@ -81,7 +75,7 @@ CREATE TABLE `anime_genres` (
   `id` int(10) UNSIGNED NOT NULL,
   `anime_id` int(10) UNSIGNED NOT NULL,
   `genre_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- A tábla adatainak kiíratása `anime_genres`
@@ -138,7 +132,7 @@ CREATE TABLE `genres` (
   `slug` varchar(100) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- A tábla adatainak kiíratása `genres`
@@ -168,7 +162,7 @@ CREATE TABLE `migrations` (
   `namespace` varchar(255) NOT NULL,
   `time` int(11) NOT NULL,
   `batch` int(11) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- A tábla adatainak kiíratása `migrations`
@@ -193,7 +187,7 @@ CREATE TABLE `users` (
   `password_hash` varchar(255) NOT NULL,
   `created_at` datetime DEFAULT NULL,
   `updated_at` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
 -- A tábla adatainak kiíratása `users`
