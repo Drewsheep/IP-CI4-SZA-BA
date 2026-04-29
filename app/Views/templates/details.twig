@@ -84,36 +84,79 @@
                                 </div>
                             </div>
                             <div class="anime__details__btn">
-                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i>Kedvencek</a>
-                                <a href="#" class="watch-btn"><span>Részletek</span> <i class="fa fa-angle-right"></i></a>
+                                <a href="#" class="follow-btn"><i class="fa fa-heart-o"></i> Hamarosan kedvencek</a>
+                                <a href="#" class="watch-btn"><span>Hamarosan részletek</span> <i class="fa fa-angle-right"></i></a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-lg-8 col-md-8">
-                        <div class="anime__details__review">
+                        <div class="anime__details__review" id="comments">
                             <div class="section-title">
-                                <h5>Kommentek</h5>
+                                <h5>Kommentek ({{ anime.comments_count }})</h5>
                             </div>
-                            <div class="anime__review__item">
-                                <div class="anime__review__item__pic">
-                                    <img src="/img/anime/review-1.jpg" alt="avatar">
+
+                            {% if comment_success %}
+                                <div class="alert alert-success" role="alert">
+                                    {{ comment_success }}
                                 </div>
-                                <div class="anime__review__item__text">
-                                    <h6>Valami <span>valami</span></h6>
-                                    <p>Egyenlőre ez még nincs kész.</p>
+                            {% endif %}
+
+                            {% if comments %}
+                                {% for comment in comments %}
+                                    <div class="anime__review__item">
+                                        <div class="anime__review__item__pic">
+                                            <img src="/img/anime/review-1.jpg" alt="avatar">
+                                        </div>
+                                        <div class="anime__review__item__text">
+                                            <h6>{{ comment.user_name ?: comment.user_username }} <span>{{ comment.created_at|date('Y. m. d. H:i') }}</span></h6>
+                                            <p>{{ comment.body|e|nl2br }}</p>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            {% else %}
+                                <div class="anime__review__item">
+                                    <div class="anime__review__item__pic">
+                                        <img src="/img/anime/review-1.jpg" alt="avatar">
+                                    </div>
+                                    <div class="anime__review__item__text">
+                                        <h6>Még nincs komment <span>Légy te az első</span></h6>
+                                        <p>Ehhez az animéhez még nem érkezett hozzászólás.</p>
+                                    </div>
                                 </div>
-                            </div>
+                            {% endif %}
                         </div>
                         <div class="anime__details__form">
                             <div class="section-title">
                                 <h5>Új komment</h5>
                             </div>
-                            <form action="#">
-                                <textarea placeholder="Ez sincs kész egyelőre xd" disabled></textarea>
-                                <button type="button" disabled><i class="fa fa-location-arrow"></i> Hamarosan</button>
-                            </form>
+
+                            {% if auth.isLoggedIn %}
+                                {% if comment_errors %}
+                                    <div class="alert alert-danger" role="alert">
+                                        <ul class="mb-0">
+                                            {% for error in comment_errors %}
+                                                <li>{{ error }}</li>
+                                            {% endfor %}
+                                        </ul>
+                                    </div>
+                                {% endif %}
+
+                                <form action="/anime/{{ anime.slug }}/comments/" method="post">
+                                    <input type="hidden" name="{{ csrf.name }}" value="{{ csrf.hash }}">
+                                    <textarea name="body" placeholder="Írd le a véleményedet erről az animéről...">{{ comment_old.body|default('')|e }}</textarea>
+                                    <button type="submit"><i class="fa fa-location-arrow"></i> Küldés</button>
+                                </form>
+                            {% else %}
+                                <div class="alert alert-info" role="alert">
+                                    Kommentelni csak bejelentkezés után tudsz. <a href="/login/">Jelentkezz be</a>.
+                                </div>
+                                <form action="#">
+                                    <textarea placeholder="Kommenteléshez előbb jelentkezz be." disabled></textarea>
+                                    <button type="button" disabled><i class="fa fa-location-arrow"></i> Bejelentkezés szükséges</button>
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">

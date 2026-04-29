@@ -3,8 +3,10 @@
 namespace App\Controllers;
 
 use App\Models\AnimeModel;
+use App\Models\CommentModel;
 use App\Models\GenreModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use CodeIgniter\HTTP\RedirectResponse;
 
 class Catalog extends BaseController
 {
@@ -62,9 +64,12 @@ class Catalog extends BaseController
             throw PageNotFoundException::forPageNotFound('A keresett anime nem található.');
         }
 
-        $genres       = $animeModel->getGenresForAnime((int) $anime['id']);
-        $genreIds     = array_map(static fn(array $genre): int => (int) $genre['id'], $genres);
+        $commentModel    = new CommentModel();
+        $genres          = $animeModel->getGenresForAnime((int) $anime['id']);
+        $genreIds        = array_map(static fn(array $genre): int => (int) $genre['id'], $genres);
         $recommendations = $animeModel->getRecommendations((int) $anime['id'], $genreIds, 4);
+        $comments        = $commentModel->getForAnime((int) $anime['id']);
+        $anime['comments_count'] = $commentModel->countForAnime((int) $anime['id']);
 
         return $this->twig->render('templates/details.twig', $this->withAuthData([
             'html_title'       => $anime['title'],
@@ -72,8 +77,54 @@ class Catalog extends BaseController
             'anime'            => $anime,
             'genres'           => $genres,
             'recommendations'  => $recommendations,
+            'comments'         => $comments,
+            'comment_success'  => session()->getFlashdata('comment_success'),
+            'comment_errors'   => session()->getFlashdata('comment_errors') ?? [],
+            'comment_old'      => session()->getFlashdata('comment_old') ?? ['body' => ''],
             'stars'            => $this->buildStars((float) ($anime['rating_avg'] ?? 0)),
+            'csrf'             => [
+                'name' => csrf_token(),
+                'hash' => csrf_hash(),
+            ],
         ]));
+    }
+
+    public function storeComment(string $slug): RedirectResponse
+    {
+        $animeModel   = new AnimeModel();
+        $commentModel = new CommentModel();
+        $anime        = $animeModel->findBySlug($slug);
+
+        if ($anime === null) {
+            throw PageNotFoundException::forPageNotFound('A keresett anime nem található.');
+        }
+
+        $data = [
+            'body' => trim((string) $this->request->getPost('body')),
+        ];
+
+        $rules = [
+            'body' => [
+                'label' => 'Komment',
+                'rules' => 'required|min_length[3]|max_length[2000]',
+            ],
+        ];
+
+        if (! $this->validateData($data, $rules)) {
+            return redirect()->to('/anime/' . $anime['slug'] . '/#comments')->with('comment_errors', $this->validator->getErrors())->with('comment_old', ['body' => $data['body']]);
+        }
+
+        $commentModel->insert([
+            'anime_id' => (int) $anime['id'],
+            'user_id'  => (int) session()->get('user_id'),
+            'body'     => $data['body'],
+        ]);
+
+        $animeModel->update((int) $anime['id'], [
+            'comments_count' => $commentModel->countForAnime((int) $anime['id']),
+        ]);
+
+        return redirect()->to('/anime/' . $anime['slug'] . '/#comments')->with('comment_success', 'A kommented sikeresen mentésre került.');
     }
 
     private function buildStars(float $rating): array

@@ -11,7 +11,9 @@ class AnimeCatalogSeeder extends Seeder
         $genreTable      = $this->db->table('genres');
         $animeTable      = $this->db->table('animes');
         $animeGenreTable = $this->db->table('anime_genres');
+        $commentTable    = $this->db->table('comments');
 
+        $commentTable->delete();
         $animeGenreTable->delete();
         $animeTable->delete();
         $genreTable->delete();
@@ -356,6 +358,62 @@ class AnimeCatalogSeeder extends Seeder
                     'genre_id' => $genreIds[$genreSlug],
                 ]);
             }
+        }
+
+        $animeRows = $animeTable->select('id, slug')->get()->getResultArray();
+        $animeIds  = [];
+        foreach ($animeRows as $animeRow) {
+            $animeIds[$animeRow['slug']] = (int) $animeRow['id'];
+        }
+
+        $userRows = $this->db->table('users')->select('id')->orderBy('id', 'ASC')->limit(3)->get()->getResultArray();
+        $userIds  = array_map(static fn(array $user): int => (int) $user['id'], $userRows);
+
+        if ($userIds !== []) {
+            $commentSeeds = [
+                [
+                    'anime_slug' => 'sen-to-chihiro-no-kamikakushi',
+                    'user_id'    => $userIds[0],
+                    'body'       => 'Nagyon erős hangulatú film, a látvány és a zene együtt elképesztően működik.',
+                ],
+                [
+                    'anime_slug' => 'fate-zero-2nd-season',
+                    'user_id'    => $userIds[0],
+                    'body'       => 'A második évad még feszesebb, mint az eleje, több karakterív itt áll össze igazán.',
+                ],
+                [
+                    'anime_slug' => 'great-teacher-onizuka',
+                    'user_id'    => $userIds[min(1, count($userIds) - 1)],
+                    'body'       => 'Onizuka egyszerre vicces és meglepően emberi főszereplő, nagyon jól öregedett a sorozat.',
+                ],
+            ];
+
+            foreach ($commentSeeds as $index => $commentSeed) {
+                if (! isset($animeIds[$commentSeed['anime_slug']])) {
+                    continue;
+                }
+
+                $commentTable->insert([
+                    'anime_id'    => $animeIds[$commentSeed['anime_slug']],
+                    'user_id'     => $commentSeed['user_id'],
+                    'body'        => $commentSeed['body'],
+                    'created_at'  => date('Y-m-d H:i:s', strtotime('-' . (3 - $index) . ' days')),
+                    'updated_at'  => $now,
+                ]);
+            }
+        }
+
+        $animeTable->set('comments_count', 0)->update();
+
+        $commentCounts = $commentTable
+            ->select('anime_id, COUNT(*) AS total')
+            ->groupBy('anime_id')
+            ->get()
+            ->getResultArray();
+
+        foreach ($commentCounts as $commentCount) {
+            $animeTable->where('id', (int) $commentCount['anime_id'])
+                ->update(['comments_count' => (int) $commentCount['total']]);
         }
     }
 }
